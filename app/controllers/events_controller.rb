@@ -1,20 +1,29 @@
 class EventsController < ApplicationController
-  before_action :current_user
+
+  def index
+    @events = Event.all
+  end
 
   def new
-    @event = current_user.events.new
+    @user = current_user
+    @event = @user.events.new
   end
 
   def create
-    @event = current_user.events.create(event_params)
+    @user = current_user
+    @event = @user.events.new(event_params)
+    if @event.save
+      redirect_to @event
+    end
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   private
 
   def event_params
-    params.require(:events).permit(:description)
+    params.fetch(:event, {}).permit(:date, :title, :description)
   end
 end
