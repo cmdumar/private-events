@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_09_24_094017) do
   end
 
   create_table "stats", force: :cascade do |t|
-    t.integer "attendee"
-    t.integer "attended_event"
+    t.integer "attendee_id"
+    t.integer "attended_event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
