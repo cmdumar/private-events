@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2020_09_24_094017) do
     t.integer "attended_event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["attended_event_id"], name: "index_stats_on_attended_event_id"
+    t.index ["attendee_id"], name: "index_stats_on_attendee_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +38,6 @@ ActiveRecord::Schema.define(version: 2020_09_24_094017) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "stats", "events", column: "attended_event_id"
+  add_foreign_key "stats", "users", column: "attendee_id"
 end
