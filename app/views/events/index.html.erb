@@ -1,27 +1,27 @@
 <h2> Past events</h2>
 
-<ul>
   <% @past_events.each do | event | %>
-    <li>
-      <h2>
-        <%= event.title %>
-      </h2>
-      <%= event.description %>
-      <%= event.date %>
-    </li>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text"><%= event.description %></p>
+        <div class="alert alert-info" role="alert">
+          <%= event.date %>
+        </div>
+        <%= link_to "Go to Event", event_path(event), class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
-</ul>
 
-<h2> Upcoming events</h2>
-
-<ul>
+  <h2> Upcoming events</h2>
   <% @upcoming_events.each do | event | %>
-    <li>
-      <h2>
-        <%= event.title %>
-      </h2>
-      <%= event.description %>
-      <%= event.date %>
-    </li>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text"><%= event.description %></p>
+        <div class="alert alert-info" role="alert">
+          <%= event.date %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>

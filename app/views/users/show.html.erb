@@ -2,41 +2,36 @@
 <h2>Hello, <%= @user.username %></h2>
 
 
-<h2>Previously attended events</h2>
-<ul>
+<h2>Previously Attended Events</h2>
   <% @user.stats.each do |att| %>
     <% if att.attended_event.date < Time.now %>
-    <li>
-      <h2>
-        <%= att.attended_event.title %>
-      </h2>
-      <p>
-        <%= att.attended_event.description %>
-      </p>
-      <p>
-        <%= att.attended_event.date %>
-      </p>
-    </li>
-    <%end%>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+          <div class="alert alert-info" role="alert">
+            <%= event.date %>
+          </div>
+          <%= link_to "Go to Event", event_path(event), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</ul>
 
-<h2>Upcoming events</h2>
-<ul>
+
+<h2>Upcoming Events</h2>
   <% @user.stats.each do |att| %>
     <% if att.attended_event.date > Time.now %>
-    <li>
-      <h2>
-        <%= att.attended_event.title %>
-      </h2>
-      <p>
-        <%= att.attended_event.description %>
-      </p>
-      <p>
-        <%= att.attended_event.date %>
-      </p>
-    </li>
-    <%end%>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+          <div class="alert alert-info" role="alert">
+            <%= event.date %>
+          </div>
+          <%= link_to "Go to Event", event_path(event), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</ul>
 <%= link_to 'Back', root_path, class: "btn btn-primary mt-2" %>
