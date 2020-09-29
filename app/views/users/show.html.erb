@@ -1,3 +1,18 @@
 <p id="notice"><%= notice %></p>
 <h2>Hello, <%= @user.username %></h2>
 <%= link_to 'Back', welcome_path, class: "btn btn-primary mt-2" %>
+<ul>
+  <% @user.stats.each do |att| %>
+    <li>
+      <h2>
+        <%= att.attended_event.title %>
+      </h2>
+      <p>
+        <%= att.attended_event.description %>
+      </p>
+      <p>
+        <%= att.attended_event.date %>
+      </p>
+    </li>
+  <% end %>
+</ul>

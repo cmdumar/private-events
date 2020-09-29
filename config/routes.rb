@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root "sessions#welcome"
 
   resources :users, only: [:new, :create, :show]
-  resources :events, except: [:edit, :destroy]
-  resources :stats, only: [:index, :create]
+  resources :events, except: [:edit, :destroy] do
+    post :attend
+  end
+  # resources :stats, only: [:index, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

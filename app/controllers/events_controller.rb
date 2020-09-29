@@ -21,6 +21,15 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def attend
+    @stat = Stat.new(attendee_id: params[:attendee_id], attended_event_id: params[:event_id])
+    if @stat.save
+      redirect_to events_path
+    else
+      render :show
+    end
+  end
+
   private
 
   def event_params
