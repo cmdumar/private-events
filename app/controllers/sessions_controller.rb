@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user
         session[:user_id] = @user.id
-        redirect_to '/welcome'
+        redirect_to events_path
     else
         redirect_to '/login'
     end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to '/welcome'
+    redirect_to events_path
   end
 
   def welcome

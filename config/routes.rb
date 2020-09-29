@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
   delete 'destroy', to: 'sessions#destroy'
-  root "sessions#welcome"
+  root "events#index"
 
   resources :users, only: [:new, :create, :show]
   resources :events, except: [:edit, :destroy] do
     post :attend
   end
-  # resources :stats, only: [:index, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

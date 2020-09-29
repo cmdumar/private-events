@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h2>Hello, <%= @user.username %></h2>
-<%= link_to 'Back', welcome_path, class: "btn btn-primary mt-2" %>
+
+
+<h2>Previously attended events</h2>
 <ul>
   <% @user.stats.each do |att| %>
+    <% if att.attended_event.date < Time.now %>
     <li>
       <h2>
         <%= att.attended_event.title %>
@@ -14,5 +17,26 @@
         <%= att.attended_event.date %>
       </p>
     </li>
+    <%end%>
   <% end %>
 </ul>
+
+<h2>Upcoming events</h2>
+<ul>
+  <% @user.stats.each do |att| %>
+    <% if att.attended_event.date > Time.now %>
+    <li>
+      <h2>
+        <%= att.attended_event.title %>
+      </h2>
+      <p>
+        <%= att.attended_event.description %>
+      </p>
+      <p>
+        <%= att.attended_event.date %>
+      </p>
+    </li>
+    <%end%>
+  <% end %>
+</ul>
+<%= link_to 'Back', root_path, class: "btn btn-primary mt-2" %>

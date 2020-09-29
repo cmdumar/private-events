@@ -2,7 +2,6 @@
 <h3>By <%= @event.creator.username %></h3>
 <p><%= @event.description %></p>
 <p><%= @event.date %></p>
-<%= link_to "Attend this event", event_attend_path(@event, attendee_id: current_user.id), method: :post %>
 
 <h2>List of attendees</h2>
 <ul>
@@ -12,3 +11,5 @@
     </li>
   <% end %>
 </ul>
+<%= link_to "Attend this event", event_attend_path(@event, attendee_id: current_user.id), method: :post %>
+<%= link_to "Home", root_path %>
