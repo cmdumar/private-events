@@ -17,7 +17,7 @@
             <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
           </div>
         </div>
-      <% elsif current_user.stats.length == 0 %>
+      <% elsif @user.stats == nil %>
         No past events found.
       <% end %>
     <% end %>
@@ -37,13 +37,13 @@
             <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
           </div>
         </div>
-      <% elsif @user.stats.length == 0 %>
+      <% elsif @user.stats == nil %>
         No past events found.
       <% end %>
     <% end %>
   </div>
 
-  <div class="col-6 mt-3">
+  <div class="col-6">
     <h4 class="text-center">Your Events</h4>
     <% current_user.events.each do |att| %>
       <div class="card mt-2">
