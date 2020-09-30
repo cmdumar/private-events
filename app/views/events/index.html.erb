@@ -1,27 +1,37 @@
-<h2> Past events</h2>
-
-  <% @past_events.each do | event | %>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-        <p class="card-text"><%= event.description %></p>
-        <div class="alert alert-info" role="alert">
-          <%= event.date %>
-        </div>
-        <%= link_to "Go to Event", event_path(event), class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
-
-  <h2> Upcoming events</h2>
-  <% @upcoming_events.each do | event | %>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-        <p class="card-text"><%= event.description %></p>
-        <div class="alert alert-info" role="alert">
-          <%= event.date %>
+<div class="row justify-content-center">
+  <div class="col-6">
+    <h2 class="text-center">Past events</h2>
+    <% @past_events.each do | event | %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+          <div class="alert alert-info" role="alert">
+            <%= event.date.strftime("%B %d, %Y") %>
+          </div>
+          <% unless !logged_in? %>
+            <%= link_to "Go to Event", event_path(event), class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-6">
+    <h2 class="text-center">Upcoming events</h2>
+    <% @upcoming_events.each do | event | %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+          <div class="alert alert-info" role="alert">
+            <%= event.date.strftime("%B %d, %Y") %>
+          </div>
+          <% unless !logged_in? %>
+            <%= link_to "Go to Event", event_path(event), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  </div>

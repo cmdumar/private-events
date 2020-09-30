@@ -1,6 +1,8 @@
-<h1>Login</h1>
-   <%= form_tag '/login' do %>
-   <%= label_tag :username%>
-   <%= text_field_tag :username %>
-   <%= submit_tag "Login"%>
-<%end%>
+<h2>Login</h2>
+<%= form_with  do |f| %>
+   <div class="form-group">
+      <label for="username">Username</label>
+      <%= f.text_field :username, class: "form-control" %>
+      <%= f.submit 'Login', class: "btn btn-primary mt-2" %>
+   </div>
+<% end %>

@@ -1,17 +1,17 @@
-  <div class="text-center">
+  <div class="text-center mt-4">
     <p class="h3"><%= @event.title %></p>
-    <p class="h4"><small class="text-muted">created by <%= @event.creator.username %></small></p>
+    <p class="h6"><small class="text-muted">created by <%= @event.creator.username %></small></p>
     <p><%= @event.description %></p>
-    <p><%= @event.date %></p>
+    <p><small class="text-muted"><%= @event.date.strftime("%B %d, %Y") %></small></p>
 
     <h2>List of attendees</h2>
-    <ul>
-      <% @event.stats.each do |att| %>
-        <li>
-          <%= att.attendee.username %>
-        </li>
-      <% end %>
-    </ul>
-    <%= link_to "Attend this event", event_attend_path(@event, attendee_id: current_user.id), method: :post %>
-    <%= link_to "Home", root_path %>
+    <% @event.stats.each do |att| %>
+        <p><%= att.attendee.username %></p>
+    <% end %>
+
+    <% unless @event.creator.username == current_user.username %>
+          <%= link_to "Attend this event", event_attend_path(@event, attendee_id: current_user.id), method: :post, class: "btn btn-info" %>
+    <% end %>
+    
+    <%= link_to "Home", root_path, class: "btn btn-dark"%>
   </div>
