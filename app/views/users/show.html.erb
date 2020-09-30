@@ -17,7 +17,7 @@
             <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
           </div>
         </div>
-      <% elsif @user.stats == nil %>
+      <% elsif current_user.stats.length == 0 %>
         No past events found.
       <% end %>
     <% end %>
@@ -37,7 +37,7 @@
             <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
           </div>
         </div>
-      <% elsif @user.stats == nil %>
+      <% elsif @user.stats.length == 0 %>
         No past events found.
       <% end %>
     <% end %>
