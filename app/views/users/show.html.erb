@@ -7,7 +7,7 @@
     <h4 class="text-center">Past events</h4>
     <% @user.stats.each do |att| %>
       <% if att.attended_event.date < Time.now %>
-        <div class="card mt-2" style="width: 18rem;">
+        <div class="card mt-2">
           <div class="card-body">
             <h5 class="card-title"><%= att.attended_event.title %></h5>
             <p class="card-text"><%= att.attended_event.description %></p>
@@ -17,14 +17,14 @@
             <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
           </div>
         </div>
-      <% else %>
+      <% elsif @user.stats == nil %>
         No past events found.
       <% end %>
     <% end %>
   </div>
 
   <div class="col-6">
-    <h4>Upcoming Events</h4>
+    <h4 class="text-center">Upcoming Events</h4>
     <% @user.stats.each do |att| %>
       <% if att.attended_event.date > Time.now %>
         <div class="card mt-2">
@@ -37,14 +37,14 @@
             <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
           </div>
         </div>
-      <% else %>
+      <% elsif @user.stats == nil %>
         No past events found.
       <% end %>
     <% end %>
   </div>
 
-  <div class="col-6">
-    <h4>Your Events</h4>
+  <div class="col-6 mt-3">
+    <h4 class="text-center">Your Events</h4>
     <% current_user.events.each do |att| %>
       <div class="card mt-2">
         <div class="card-body">
