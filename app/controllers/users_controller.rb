@@ -5,8 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -29,11 +28,11 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.fetch(:user, {}).permit(:email, :username)
-    end
+  def user_params
+    params.fetch(:user, {}).permit(:email, :username)
+  end
 end

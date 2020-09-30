@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   def index
     @past_events = Event.past(Time.now)
     @upcoming_events = Event.upcoming(Time.now)
@@ -13,9 +12,7 @@ class EventsController < ApplicationController
   def create
     @user = current_user
     @event = @user.events.new(event_params)
-    if @event.save
-      redirect_to @event
-    end
+    redirect_to @event if @event.save
   end
 
   def show

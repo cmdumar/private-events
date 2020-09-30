@@ -15,6 +15,9 @@
         </div>
       </div>
     <% end %>
+    <% if @past_events.nil? %>
+      No past events found.
+    <% end %>
   </div>
 
   <div class="col-6">
@@ -32,6 +35,9 @@
           <% end %>
         </div>
       </div>
+    <% end %>
+    <% if @upcoming_events.nil? %>
+      No upcoming events found.
     <% end %>
   </div>
   </div>
