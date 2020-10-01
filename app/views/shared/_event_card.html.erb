@@ -1,6 +1,6 @@
 <div class="col-6">
     <%= content_tag(:h2, title, :class => "text-center") %>
-    <% ev.each do | event | %>
+    <% ev.uniq.each do | event | %>
       <div class="card mt-2">
         <div class="card-body">
           <h5 class="card-title"><%= event.title %></h5>

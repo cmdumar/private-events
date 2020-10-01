@@ -5,13 +5,10 @@
     <p><small class="text-muted"><%= @event.date.strftime("%B %d, %Y") %></small></p>
 
     <h2>List of attendees</h2>
-    <% @event.stats.each do |att| %>
+    <% @event.stats.uniq.each do |att| %>
         <p><%= att.attendee.username %></p>
     <% end %>
 
-    <% unless @event.creator.username == current_user.username %>
-          <%= link_to "Attend this event", event_attend_path(@event, attendee_id: current_user.id), method: :post, class: "btn btn-info" %>
-    <% end %>
-    
+    <%= attend_event(@event)%>
     <%= link_to "Home", root_path, class: "btn btn-dark"%>
   </div>

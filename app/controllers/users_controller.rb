@@ -5,7 +5,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show; end
+  def show
+    @past_events = current_user.events_attended.past(Time.now)
+    @upcoming_events = current_user.events_attended.upcoming(Time.now)
+    @cu_events = current_user.events
+  end
 
   def new
     @user = User.new

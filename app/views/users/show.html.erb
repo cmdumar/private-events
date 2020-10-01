@@ -3,64 +3,9 @@
   <h2>Hello, <%= @user.username %></h2>
 </div>
 <div class="row justify-content-start">
-  <div class="col-6">
-    <h4 class="text-center">Past events</h4>
-    <% @user.stats.each do |att| %>
-      <% if att.attended_event.date < Time.now %>
-        <div class="card mt-2">
-          <div class="card-body">
-            <h5 class="card-title"><%= att.attended_event.title %></h5>
-            <p class="card-text"><%= att.attended_event.description %></p>
-            <div class="alert alert-info" role="alert">
-              <%= att.attended_event.date.strftime("%B %d, %Y") %>
-            </div>
-            <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
-          </div>
-        </div>
-      <% else %>
-        No past events found.
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="col-6">
-    <h4 class="text-center">Upcoming Events</h4>
-    <% @user.stats.each do |att| %>
-      <% if att.attended_event.date > Time.now %>
-        <div class="card mt-2">
-          <div class="card-body">
-            <h5 class="card-title"><%= att.attended_event.title %></h5>
-            <p class="card-text"><%= att.attended_event.description %></p>
-            <div class="alert alert-info" role="alert">
-              <%= att.attended_event.date.strftime("%B %d, %Y") %>
-            </div>
-            <%= link_to "Go to Event", event_path(att.attended_event), class: "btn btn-primary" %>
-          </div>
-        </div>
-      <% else %>
-        No past events found.
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="col-6">
-    <h4 class="text-center">Your Events</h4>
-    <% current_user.events.each do |att| %>
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title"><%= att.title %></h5>
-          <p class="card-text"><%= att.description %></p>
-          <div class="alert alert-info" role="alert">
-            <%= att.date.strftime("%B %d, %Y") %>
-          </div>
-          <%= link_to "Go to Event", event_path(att), class: "btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
-    <% if current_user.events.length == 0 %>
-      No events found.
-    <% end %>
-  </div>
+ <%= render :partial => 'shared/event_card', :locals => { :ev => @past_events, :title => 'Past events' } %>
+ <%= render :partial => 'shared/event_card', :locals => { :ev => @upcoming_events, :title => 'Upcoming events' } %>
+ <%= render :partial => 'shared/event_card', :locals => { :ev => @cu_events, :title => 'Past events' } %>
 </div>
 <div class="d-flex justify-content-center mt-4">
   <%= link_to 'Back', root_path, class: "btn btn-primary" %>
