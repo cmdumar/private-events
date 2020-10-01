@@ -1,0 +1,15 @@
+<div class="col-6">
+    <%= content_tag(:h2, title, :class => "text-center") %>
+    <% ev.each do | event | %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+          <div class="alert alert-info" role="alert">
+            <%= event.date.strftime("%B %d, %Y") %>
+          </div>
+            <%= go_to_btn(event) %>
+        </div>
+      </div>
+    <% end %>
+  </div>

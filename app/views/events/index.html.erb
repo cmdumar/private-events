@@ -1,5 +1,15 @@
 <div class="row justify-content-center">
-  <div class="col-6">
+  <%= render :partial => 'event_card', :locals => { :ev => @past_events, :title => 'Past events' } %>
+  <%= render :partial => 'event_card', :locals => { :ev => @upcoming_events, :title => 'Upcoming events' } %>
+  
+  
+  
+  
+  
+  
+  
+  
+   <!-- <div class="col-6">
     <h2 class="text-center">Past events</h2>
     <% @past_events.each do | event | %>
       <div class="card mt-2">
@@ -40,4 +50,5 @@
       No upcoming events found.
     <% end %>
   </div>
+  --> 
   </div>
