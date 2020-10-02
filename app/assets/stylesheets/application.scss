@@ -15,3 +15,11 @@
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.style-none {
+    list-style: none;
+}
+
+.error-text {
+    font-size: 0.9rem;
+}

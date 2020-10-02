@@ -1,16 +1,13 @@
 <%= form_with(model: user, local: true) do |f| %>
-    <ul>
-      <% user.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
     <div class="form-group">
       <label for="email">Email</label>
       <%= f.text_field :email, class: "form-control" %>
+      <%= error_messages(user, :email)%>
     </div>
     <div class="form-group">
       <label for="username">Username</label>
       <%= f.text_field :username, class: "form-control" %>
+      <%= error_messages(user, :username)%>
     </div>
     <%= f.submit 'Sign up', class: "btn btn-primary mt-2" %>
 <% end %>

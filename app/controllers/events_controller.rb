@@ -5,16 +5,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = current_user.events.build
+    @event = Event.new
   end
 
   def create
     @event = current_user.events.build(event_params)
-      if @event.save
-        redirect_to @event
-      else
-        render new_event_path(@event)
-      end
+    redirect_to @event if @event.save
   end
 
   def show
@@ -22,7 +18,7 @@ class EventsController < ApplicationController
   end
 
   def attend
-    @stat = Stat.new(user_id: params[:user_id], event_id: params[:event_id])
+    @stat = Stat.new(attendee_id: params[:attendee_id], attended_event_id: params[:event_id])
     if @stat.save
       redirect_to events_path
     else
