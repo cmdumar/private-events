@@ -6,7 +6,7 @@
 
     <h2>List of attendees</h2>
     <% @event.stats.uniq.each do |att| %>
-        <p><%= att.attendee.username %></p>
+        <p><%= att.user.username %></p>
     <% end %>
 
     <%= attend_event(@event)%>

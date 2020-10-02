@@ -7,8 +7,8 @@ module EventsHelper
 
      def attend_event(event)
         if event.creator.username != current_user.username
-            if event.stats.where('attendee_id = ?', current_user.id).length == 0
-            link_to "Attend this event", event_attend_path(event, attendee_id: current_user.id), method: :post, class: "btn btn-info"
+            if event.stats.where('user_id = ?', current_user.id).length == 0
+            link_to "Attend this event", event_attend_path(event, user_id: current_user.id), method: :post, class: "btn btn-info"
             end
         end
      end
