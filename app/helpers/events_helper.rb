@@ -4,7 +4,7 @@ module EventsHelper
   end
 
   def attend_event(event)
-    return if event.creator.username != current_user.username
+    return unless event.creator.username != current_user.username
 
     return unless event.stats.where('user_id = ?', current_user.id).length.zero?
 
