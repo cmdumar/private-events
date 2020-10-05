@@ -16,7 +16,8 @@ Note: Go to [Install Rails website](http://installrails.com/) if you don't have 
 ## Instructions to Run the App Locally
 
 1. Clone the repository using `git clone https://github.com/mohammadumar28/private-events.git`
-2. Switch to the reformer branch using `git checkout private-events`
+2. Switch to the reformer branch using `git checkout private-events`.
+3. Run `yarn install --check-files` to install yarn packages.
 3. Run `bundle install` to install all the gems.
 4. Run `rake db:migrate` to migrate the database.
 5. Run `rails server` to start the application.
