@@ -16,6 +16,5 @@ module EventsHelper
           class: 'btn btn-info'
         )
       end
-    end
   end
 end
