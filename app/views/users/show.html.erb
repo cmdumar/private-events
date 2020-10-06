@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<div class="alert alert-success text-center">
+  <h2>Hello, <%= @user.username %></h2>
+</div>
+<div class="row justify-content-start">
+ <%= render :partial => 'shared/event_card', :locals => { :ev => @past_events, :title => 'Past events' } %>
+ <%= render :partial => 'shared/event_card', :locals => { :ev => @upcoming_events, :title => 'Upcoming events' } %>
+ <%= render :partial => 'shared/event_card', :locals => { :ev => @cu_events, :title => 'My events' } %>
+</div>
+<div class="d-flex justify-content-center mt-4">
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+</div>

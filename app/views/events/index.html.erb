@@ -1,0 +1,4 @@
+<div class="row justify-content-center">
+  <%= render :partial => 'shared/event_card', :locals => { :ev => @past_events, :title => 'Past events' } %>
+  <%= render :partial => 'shared/event_card', :locals => { :ev => @upcoming_events, :title => 'Upcoming events' } %>
+</div>

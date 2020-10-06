@@ -1,0 +1,14 @@
+  <div class="text-center mt-4">
+    <p class="h3"><%= @event.title %></p>
+    <p class="h6"><small class="text-muted">created by <%= @event.creator.username %></small></p>
+    <p><%= @event.description %></p>
+    <p><small class="text-muted"><%= @event.date.strftime("%B %d, %Y") %></small></p>
+
+    <h2>List of attendees</h2>
+    <% @event.stats.uniq.each do |att| %>
+        <p><%= att.user.username %></p>
+    <% end %>
+
+    <%= attend_event(@event)%>
+    <%= link_to "Home", root_path, class: "btn btn-dark"%>
+  </div>
